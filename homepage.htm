@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocHub - Edit, Convert, and Share Your Documents</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --header-bg: #4CAF50;
+            --header-text: #ffffff;
+            --section-bg: #f4f4f4;
+            --card-bg: #ffffff;
+            --border-color: #ddd;
+            --btn-bg: #4CAF50;
+            --btn-hover: #45a049;
+            --btn-focus: #2e7d32;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --header-bg: #2e7d32;
+            --header-text: #ffffff;
+            --section-bg: #1e1e1e;
+            --card-bg: #1e1e1e;
+            --border-color: #444;
+            --btn-bg: #66bb6a;
+            --btn-hover: #81c784;
+            --btn-focus: #4caf50;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--header-text);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0 10px;
+            transition: transform 0.2s;
+        }
+
+        .theme-toggle:hover,
+        .theme-toggle:focus-visible {
+            transform: scale(1.15);
+            outline: none;
+        }
+
+        .btn {
+            background-color: var(--btn-bg);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .btn:hover,
+        .btn:focus-visible {
+            background-color: var(--btn-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--btn-focus);
+            outline-offset: 2px;
+        }
+
+        .hero {
+            background-color: var(--section-bg);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: var(--bg-color);
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 260px;
+            max-width: 300px;
+            padding: 25px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        footer {
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Reduced specificity – no overwriting */
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DocHub</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#publish">Publish</a></li>
+                <li><a href="#login">Login/Signup</a></li>
+                <li>
+                    <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">🌙</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h2>Welcome to DocHub</h2>
+        <p>Your all-in-one platform to edit, convert, and share PDF documents. Upload your research papers, collaborate, and publish with ease.</p>
+        <a href="#get-started" class="btn">Get Started</a>
+    </section>
+
+    <section id="features" class="section">
+        <h2>Powerful Features</h2>
+        <div class="features">
+            <div class="feature">
+                <h3>PDF Editing Tools</h3>
+                <p>Crop, cut, and edit your PDF files directly on the platform. No downloads required.</p>
+            </div>
+            <div class="feature">
+                <h3>File Conversion</h3>
+                <p>Convert your documents to any format, including PDF, Word, Excel, and more.</p>
+            </div>
+            <div class="feature">
+                <h3>Research Repository</h3>
+                <p>Browse and search through a vast collection of user-published research documents and PDFs.</p>
+            </div>
+            <div class="feature">
+                <h3>Publish Your Work</h3>
+                <p>Upload and share your own PDFs or writings with the community. Gain visibility for your research.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="get-started" class="section">
+        <h2>How It Works</h2>
+        <p>1. Sign up for a free account.<br>
+           2. Upload your PDF or document.<br>
+           3. Use our tools to edit and convert.<br>
+           4. Publish to our repository or share privately.</p>
+        <a href="#login" class="btn">Sign Up Now</a>
+    </section>
+
+    <footer>
+        <p>© <script>document.write(new Date().getFullYear());</script> DocHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const toggleButton = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+
+        // 1. System preference first
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        let savedTheme = localStorage.getItem('theme');
+
+        // Priority: saved > system > light
+        let theme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+        html.setAttribute('data-theme', theme);
+        toggleButton.textContent = theme === 'dark' ? '☀️' : '🌙';
+        toggleButton.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+
+        toggleButton.addEventListener('click', () => {
+            theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+
+            toggleButton.textContent = theme === 'dark' ? '☀️' : '🌙';
+            toggleButton.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+        });
+
+        // Optional: listen for system changes (good UX)
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {  // only if user hasn't set preference
+                const newTheme = e.matches ? 'dark' : 'light';
+                html.setAttribute('data-theme', newTheme);
+                toggleButton.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+                toggleButton.setAttribute('aria-pressed', newTheme === 'dark' ? 'true' : 'false');
+            }
+        });
+    </script>
+
+</body>
+</html>
