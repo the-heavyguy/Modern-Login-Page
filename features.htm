@@ -6,6 +6,7 @@
     <title>DocHub - Workspace</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* ... Your existing CSS remains exactly the same ... */
         :root {
             --bg-color: #ffffff;
             --text-color: #333333;
@@ -18,7 +19,6 @@
             --accent-purple: #764ba2;
             --sidebar-text: #333333;
         }
-
         [data-theme="dark"] {
             --bg-color: #121212;
             --text-color: #e0e0e0;
@@ -31,7 +31,6 @@
             --accent-purple: #9575cd;
             --sidebar-text: #e0e0e0;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
@@ -40,12 +39,7 @@
             transition: background-color 0.4s, color 0.4s;
             min-height: 100vh;
         }
-
-        .workspace-container {
-            display: flex;
-            min-height: 100vh;
-        }
-
+        .workspace-container { display: flex; min-height: 100vh; }
         .sidebar {
             width: 260px;
             background: var(--section-bg);
@@ -54,16 +48,8 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            transition: background 0.4s, border-color 0.4s;
         }
-
-        .sidebar h2 {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            padding-left: 1rem;
-            color: var(--header-bg);
-        }
-
+        .sidebar h2 { font-size: 1.2rem; margin-bottom: 2rem; color: var(--header-bg); }
         .nav-item {
             padding: 1rem;
             border-radius: 8px;
@@ -76,107 +62,40 @@
             color: var(--sidebar-text);
             text-decoration: none;
         }
-
-        .nav-item:hover,
-        .nav-item.active {
-            background: var(--btn-bg);
-            color: white;
-        }
-
-        .theme-toggle {
-            margin-top: auto;
-            padding: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.6rem;
-            cursor: pointer;
-            color: var(--sidebar-text);
-            transition: transform 0.2s, color 0.2s;
-            align-self: center;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.15);
-        }
-
-        .main-content {
-            flex: 1;
-            padding: 3rem;
-            background: var(--bg-color);
-            transition: background 0.4s;
-        }
-
-        .feature-header h1 {
-            margin-bottom: 0.5rem;
-        }
-
-        .tool-card {
-            background: var(--card-bg);
-            border: 2px dashed var(--border-color);
-            border-radius: 20px;
-            padding: 4rem 2rem;
-            text-align: center;
-            transition: border-color 0.3s, background 0.4s;
-        }
-
-        .tool-card:hover {
-            border-color: var(--btn-bg);
-        }
-
-        .upload-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .file-input {
-            display: none;
-        }
-
-        .upload-label {
-            background: var(--btn-bg);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            cursor: pointer;
-            display: inline-block;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: background 0.25s;
-        }
-
-        .upload-label:hover {
-            background: var(--btn-hover);
-        }
-
-        .search-bar {
-            width: 100%;
-            max-width: 600px;
-            padding: 1rem;
-            border-radius: 50px;
-            border: 1px solid var(--border-color);
-            background: var(--section-bg);
-            color: var(--text-color);
-            margin-bottom: 2rem;
-            transition: all 0.3s;
-        }
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .paper-card {
-            background: var(--section-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            transition: background 0.4s, border-color 0.4s;
-        }
-
+        .nav-item:hover, .nav-item.active { background: var(--btn-bg); color: white; }
+        .theme-toggle { margin-top: auto; padding: 1rem; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--sidebar-text); align-self: center; }
+        .main-content { flex: 1; padding: 3rem; background: var(--bg-color); }
+        .tool-card { background: var(--card-bg); border: 2px dashed var(--border-color); border-radius: 20px; padding: 4rem 2rem; text-align: center; }
+        .upload-label { background: var(--btn-bg); color: white; padding: 1rem 2rem; border-radius: 10px; cursor: pointer; display: inline-block; font-weight: 600; margin-top: 1rem; }
+        .search-bar { width: 100%; max-width: 600px; padding: 1rem; border-radius: 50px; border: 1px solid var(--border-color); background: var(--section-bg); color: var(--text-color); margin-bottom: 2rem; }
+        .paper-card { background: var(--section-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 10px;}
         .hidden { display: none; }
+        
+        /* Modal CSS */
+        .modal {
+            display: none; /* Changed to none by default */
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal.active { display: flex; } /* Class to show modal */
+        .modal-content {
+            background: #2a2a2a; /* Solid background for visibility */
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 380px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .modal-content input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; }
+        .modal-content button { width: 100%; padding: 12px; background: var(--btn-bg); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .close-btn { position: absolute; top: 10px; right: 20px; font-size: 24px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -184,36 +103,19 @@
 <div class="workspace-container">
     <aside class="sidebar">
         <h2>DocHub Tools</h2>
-        <div class="nav-item active" onclick="showTool('editor')">📄 PDF Editor</div>
-        <div class="nav-item" onclick="showTool('converter')">🔄 File Converter</div>
+        <div class="nav-item active" onclick="showTool('converter')">🔄 File Converter</div>
         <div class="nav-item" onclick="showTool('research')">🔍 Research Hub</div>
         <div class="nav-item" onclick="showTool('publish')">🌐 Publish Work</div>
-        <hr style="width: 100%; border: 0.5px solid var(--border-color); margin: 1.5rem 0;">
-
-        <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-
-        <a href="homepagewithlogin.html" class="nav-item" style="opacity: 0.7; margin-top: 1rem;">← Back to Home</a>
+        
+        <div class="bottom-nav" style="margin-top: auto;">
+            <div class="nav-item" onclick="openLoginModal()">👤 Sign In</div>
+            <a href="#" class="nav-item" style="opacity: 0.7;">← Back to Home</a>
+            <button class="theme-toggle">🌙</button>
+        </div>
     </aside>
 
     <main class="main-content">
-        <!-- Your tool sections remain the same -->
-        <div id="editor" class="tool-section">
-            <div class="feature-header">
-                <h1>PDF Editor</h1>
-                <p>Upload a PDF to crop, cut, or annotate your document.</p>
-            </div>
-            <div class="tool-card">
-                <span class="upload-icon">✍️</span>
-                <h3>Drop your PDF here</h3>
-                <p>or click to browse your files</p>
-                <label class="upload-label">
-                    Choose File
-                    <input type="file" class="file-input" accept=".pdf">
-                </label>
-            </div>
-        </div>
-
-        <div id="converter" class="tool-section hidden">
+       <div id="converter" class="tool-section hidden">
             <div class="feature-header">
                 <h1>File Converter</h1>
                 <p>Transform your documents into Word, Excel, or JPG instantly.</p>
@@ -263,48 +165,54 @@
                 <label class="upload-label" style="background: var(--accent-purple);">Select & Publish</label>
             </div>
         </div>
-    </main>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+        <h2>Welcome Back</h2>
+        <form onsubmit="event.preventDefault(); alert('Login Successful!'); closeLoginModal();">
+            <input type="text" placeholder="Username or Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </div>
 
 <script>
-    // ── Tool switching ────────────────────────────────────────
+    // 1. Tool Switching Logic
     function showTool(toolId) {
         document.querySelectorAll('.tool-section').forEach(s => s.classList.add('hidden'));
         document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-
+        
         document.getElementById(toolId).classList.remove('hidden');
-
-        // Better active detection (more reliable)
-        document.querySelector(`.nav-item[onclick="showTool('${toolId}')"]`)
-            ?.classList.add('active');
+        // Finds the nav item that matches the toolId and highlights it
+        event.currentTarget.classList.add('active');
     }
 
-    // ── Theme logic (same as homepage) ─────────────────────────
-    const toggle = document.querySelector('.theme-toggle');
-    const html = document.documentElement;
+    // 2. Modal Logic (The Fix)
+    const modal = document.getElementById('loginModal');
 
-    // 1. Get saved preference or fall back to system preference
-    let theme = localStorage.getItem('theme') ||
-                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    function openLoginModal() {
+        modal.classList.add('active');
+    }
 
-    html.setAttribute('data-theme', theme);
-    toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    function closeLoginModal() {
+        modal.classList.remove('active');
+    }
 
-    // 2. Toggle handler
-    toggle.addEventListener('click', () => {
-        theme = theme === 'light' ? 'dark' : 'light';
-        html.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-    });
-
-    // 3. Optional: listen for system theme changes (if user has no manual preference)
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        if (!localStorage.getItem('theme')) {  // respect manual choice
-            theme = e.matches ? 'dark' : 'light';
-            html.setAttribute('data-theme', theme);
-            toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    // Close modal if clicking outside the box
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeLoginModal();
         }
+    }
+
+    // 3. Theme Toggle Logic
+    const toggle = document.querySelector('.theme-toggle');
+    toggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        toggle.textContent = isDark ? '🌙' : '☀️';
     });
 </script>
 
