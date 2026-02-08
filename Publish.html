@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><a href="MainHomePage.html">DOCHub</a>- Publish PDF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --header-bg: #4CAF50;
+            --section-bg: #f4f4f4;
+            --card-bg: #ffffff;
+            --border-color: #ddd;
+            --btn-bg: #4CAF50;
+            --btn-hover: #45a049;
+            --accent-purple: #764ba2;
+            --sidebar-text: #333333;
+            --preview-bg: #f9f9f9;
+        }
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --header-bg: #2e7d32;
+            --section-bg: #1e1e1e;
+            --card-bg: #1e1e1e;
+            --border-color: #444;
+            --btn-bg: #66bb6a;
+            --btn-hover: #81c784;
+            --accent-purple: #9575cd;
+            --sidebar-text: #e0e0e0;
+            --preview-bg: #1e1e1e;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            transition: background-color 0.4s, color 0.4s;
+            min-height: 100vh;
+        }
+        .publish-container {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            width: 100%;
+            background: var(--header-bg);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+        }
+        .feature-header {
+            text-align: center;
+            margin: 2.5rem 0 2rem;
+        }
+        .upload-area, .preview-area {
+            background: var(--card-bg);
+            border: 2px dashed var(--border-color);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: border-color 0.3s;
+            margin-bottom: 2rem;
+        }
+        .upload-area:hover, .preview-area:hover {
+            border-color: var(--btn-bg);
+        }
+        .upload-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .file-input {
+            display: none;
+        }
+        .upload-label {
+            background: var(--btn-bg);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-block;
+            margin: 1rem 0;
+        }
+        .upload-label:hover {
+            background: var(--btn-hover);
+        }
+        .publish-btn {
+            background: var(--accent-purple);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: all 0.25s;
+        }
+        .publish-btn:hover:not(:disabled) {
+            background: #5e3983;
+            transform: translateY(-2px);
+        }
+        .publish-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .file-name {
+            margin: 1rem 0;
+            font-style: italic;
+            color: var(--text-color);
+        }
+        .preview-container {
+            margin-top: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--preview-bg);
+            height: 500px;
+            max-height: 65vh;
+        }
+        .preview-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .no-preview {
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>DocHub - Publish</h1>
+        <div style="display: flex; align-items: center; gap: 1.2rem;">
+            <a href="MainHomePage.html" class="nav-item">← Back to Home</a>
+            <a href="features.htm" class="nav-item">Workspace</a>
+            <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </div>
+
+    <div class="publish-container">
+        <div class="feature-header">
+            <h1>Publish Your PDF</h1>
+            <p>Upload your document, preview it, and publish with one click to get a permanent shareable link.</p>
+        </div>
+
+        <div class="upload-area">
+            <span class="upload-icon">📄</span>
+            <h3>Upload PDF</h3>
+            <input type="file" id="pdfUpload" class="file-input" accept=".pdf">
+            <label for="pdfUpload" class="upload-label">Choose PDF from your computer</label>
+            <p class="file-name" id="fileName">No file selected</p>
+        </div>
+
+        <div class="preview-area">
+            <h3>Preview</h3>
+            <div class="preview-container" id="previewContainer">
+                <div class="no-preview">PDF preview will appear here after selecting a file</div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <button class="publish-btn" id="publishBtn" onclick="publishPDF()" disabled>
+                Publish PDF
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Theme handling
+        const toggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        let theme = localStorage.getItem('theme') ||
+                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.setAttribute('data-theme', theme);
+        toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+
+        toggle.addEventListener('click', () => {
+            theme = theme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                theme = e.matches ? 'dark' : 'light';
+                html.setAttribute('data-theme', theme);
+                toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+            }
+        });
+
+        // PDF handling
+        const fileInput = document.getElementById('pdfUpload');
+        const fileNameDisplay = document.getElementById('fileName');
+        const publishBtn = document.getElementById('publishBtn');
+        const previewContainer = document.getElementById('previewContainer');
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            previewContainer.innerHTML = ''; // clear previous preview
+
+            if (file && file.type === 'application/pdf') {
+                fileNameDisplay.textContent = `Selected: ${file.name}`;
+                publishBtn.disabled = false;
+
+                // Create object URL for preview
+                const objectUrl = URL.createObjectURL(file);
+
+                // Create iframe for preview
+                const iframe = document.createElement('iframe');
+                iframe.src = objectUrl;
+                previewContainer.appendChild(iframe);
+
+                // Clean up object URL when page unloads or new file selected
+                window.addEventListener('beforeunload', () => URL.revokeObjectURL(objectUrl));
+            } else {
+                fileNameDisplay.textContent = file ? 'Please select a valid PDF file' : 'No file selected';
+                publishBtn.disabled = true;
+                previewContainer.innerHTML = '<div class="no-preview">Invalid file or no file selected</div>';
+            }
+        });
+
+        function publishPDF() {
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            // In a real app → send to server here (FormData + fetch/axios)
+            alert(`Publishing "${file.name}"...\n\nSuccess!\n\nPermanent link example:\nhttps://dochub.example.com/published/${Date.now()}-${file.name}`);
+
+            // Reset form
+            fileInput.value = '';
+            fileNameDisplay.textContent = 'No file selected';
+            publishBtn.disabled = true;
+            previewContainer.innerHTML = '<div class="no-preview">PDF preview will appear here after selecting a file</div>';
+        }
+    </script>
+</body>
+</html>
